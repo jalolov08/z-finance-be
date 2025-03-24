@@ -1,3 +1,4 @@
+import { ClientSession } from "mongoose";
 import { Cashbox } from "../models/cashobx.model";
 import { Currency } from "../types/currency.type";
 import { IUser } from "../types/user.type";
@@ -43,9 +44,9 @@ class CashboxService {
     }
   }
 
-  async getCashbox(id: string) {
+  async getCashbox(id: string, session: ClientSession | null = null) {
     try {
-      const cashbox = await Cashbox.findById(id);
+      const cashbox = await Cashbox.findById(id).session(session);
 
       if (!cashbox) {
         throw new NotFoundError("Касса не найдена.");
