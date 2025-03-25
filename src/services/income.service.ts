@@ -1,4 +1,5 @@
 import { Income } from "../models/income.model";
+import { Transaction } from "../models/transaction.model";
 import { IUser } from "../types/user.type";
 import { InternalServerError, NotFoundError } from "../utils/errors";
 
@@ -33,6 +34,11 @@ class IncomeService {
       if (!updatedIncome) {
         throw new NotFoundError("Приход не найден.");
       }
+
+      await Transaction.updateMany(
+        { incomeId: id },
+        { $set: { incomeName: name } }
+      );
 
       return updatedIncome;
     } catch (error) {

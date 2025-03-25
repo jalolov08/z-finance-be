@@ -3,6 +3,7 @@ import { Cashbox } from "../models/cashobx.model";
 import { Currency } from "../types/currency.type";
 import { IUser } from "../types/user.type";
 import { InternalServerError, NotFoundError } from "../utils/errors";
+import { Transaction } from "../models/transaction.model";
 
 class CashboxService {
   async createCashbox(name: string, currency: Currency, user: IUser) {
@@ -36,6 +37,11 @@ class CashboxService {
       if (!updatedCashbox) {
         throw new NotFoundError("Касса не найдена.");
       }
+
+      await Transaction.updateMany(
+        { cashboxId: cashboxId },
+        { $set: { cashboxName: name } }
+      );
 
       return updatedCashbox;
     } catch (error) {

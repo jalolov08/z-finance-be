@@ -1,6 +1,7 @@
 import { Cashbox } from "../models/cashobx.model";
 import { Expense } from "../models/expense.model";
 import { Income } from "../models/income.model";
+import { Transaction } from "../models/transaction.model";
 import { User } from "../models/user.model";
 import { IUser } from "../types/user.type";
 import {
@@ -111,6 +112,10 @@ class UserService {
     await Cashbox.updateMany({ ownerId: _id }, { $set: { ownerName: name } });
     await Income.updateMany({ ownerId: _id }, { $set: { ownerName: name } });
     await Expense.updateMany({ ownerId: _id }, { $set: { ownerName: name } });
+    await Transaction.updateMany(
+      { ownerId: _id },
+      { $set: { ownerName: name } }
+    );
   }
 }
 

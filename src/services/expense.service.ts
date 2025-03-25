@@ -1,4 +1,5 @@
 import { Expense } from "../models/expense.model";
+import { Transaction } from "../models/transaction.model";
 import { IUser } from "../types/user.type";
 import { InternalServerError, NotFoundError } from "../utils/errors";
 
@@ -48,6 +49,11 @@ class ExpenseService {
       if (!expense) {
         throw new NotFoundError("Расход не найден.");
       }
+
+      await Transaction.updateMany(
+        { expenseId: id },
+        { $set: { expenseName: name } }
+      );
 
       return expense;
     } catch (error) {

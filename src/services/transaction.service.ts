@@ -163,6 +163,9 @@ class TransactionService {
       if (filters.type) {
         query.type = filters.type;
       }
+      if (filters.currency) {
+        query.currency = filters.currency;
+      }
       if (filters.incomeId) {
         query.ownerId = filters.incomeId;
       }
