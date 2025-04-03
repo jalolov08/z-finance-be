@@ -18,7 +18,7 @@ class CurrencyRatesService {
       throw new InternalServerError("Ошибка при курсов валют.");
     }
   }
-  async updateCurrencyRates(USD_to_RUB: number, USD_to_CNY: number) {
+  async updateCurrencyRates(USD_to_RUB: number, USD_to_TJS: number) {
     try {
       const existingRates = await CurrencyRates.findOne();
 
@@ -26,8 +26,8 @@ class CurrencyRatesService {
         existingRates.USD_to_RUB = Types.Decimal128.fromString(
           USD_to_RUB.toString()
         );
-        existingRates.USD_to_CNY = Types.Decimal128.fromString(
-          USD_to_CNY.toString()
+        existingRates.USD_to_TJS = Types.Decimal128.fromString(
+          USD_to_TJS.toString()
         );
         existingRates.lastUpdate = dayjs().format("DD.MM.YYYY HH:mm");
         await existingRates.save();
@@ -36,7 +36,7 @@ class CurrencyRatesService {
       } else {
         const newCurrencyRates = new CurrencyRates({
           USD_to_RUB: Types.Decimal128.fromString(USD_to_RUB.toString()),
-          USD_to_CNY: Types.Decimal128.fromString(USD_to_CNY.toString()),
+          USD_to_TJS: Types.Decimal128.fromString(USD_to_TJS.toString()),
         });
         await newCurrencyRates.save();
 

@@ -11,13 +11,13 @@ export const getCurrencyRates = [
   }),
 ];
 export const updateCurrencyRates = [
-  validateFields(["USD_to_RUB", "USD_to_CNY"]),
+  validateFields(["USD_to_RUB", "USD_to_TJS"]),
   asyncHandler(async (req: Request, res: Response) => {
-    const { USD_to_RUB, USD_to_CNY } = req.body;
+    const { USD_to_RUB, USD_to_TJS } = req.body;
 
     const updateCurrencyRates = await currencyRatesService.updateCurrencyRates(
       USD_to_RUB,
-      USD_to_CNY
+      USD_to_TJS
     );
 
     res.status(200).json(updateCurrencyRates);

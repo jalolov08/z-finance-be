@@ -8,7 +8,7 @@ const CurrencyRatesSchema = new Schema<ICurrencyRates>(
       type: Schema.Types.Decimal128,
       required: true,
     },
-    USD_to_CNY: {
+    USD_to_TJS: {
       type: Schema.Types.Decimal128,
       required: true,
     },

@@ -63,7 +63,7 @@ class TransactionService {
         cashboxName: cashbox.name,
         currency,
         USD_to_RUB: currencyRates.USD_to_RUB,
-        USD_to_CNY: currencyRates.USD_to_CNY,
+        USD_to_TJS: currencyRates.USD_to_TJS,
         amount: amounts,
         balanceBefore,
         balanceAfter,

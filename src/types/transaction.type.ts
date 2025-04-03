@@ -13,11 +13,11 @@ export interface ITransaction extends Document {
   cashboxName: string;
   currency: Currency;
   USD_to_RUB: Types.Decimal128;
-  USD_to_CNY: Types.Decimal128;
+  USD_to_TJS: Types.Decimal128;
   amount: {
     USD: Types.Decimal128;
     RUB: Types.Decimal128;
-    CNY: Types.Decimal128;
+    TJS: Types.Decimal128;
   };
   expenseId?: Types.ObjectId;
   expenseName?: string;
